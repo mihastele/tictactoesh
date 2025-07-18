@@ -78,28 +78,28 @@ func (g *GameState) checkVictory() {
 	for i := 0; i < 3; i++ {
 		if g.board[i][0] != 0 && g.board[i][0] == g.board[i][1] && g.board[i][1] == g.board[i][2] {
 			g.victory = g.board[i][0] // Return the winner
-			//fmt.Printf("VICTORY player %d \n", g.board[i][0])
+			return
 		}
 		if g.board[0][i] != 0 && g.board[0][i] == g.board[1][i] && g.board[1][i] == g.board[2][i] {
 			g.victory = g.board[0][i]
-			//fmt.Printf("VICTORY player %d \n", g.board[0][i])
+			return
 		}
 	}
 
 	// Check diagonals
 	if g.board[0][0] != 0 && g.board[0][0] == g.board[1][1] && g.board[1][1] == g.board[2][2] {
 		g.victory = g.board[0][0]
-		//fmt.Printf("VICTORY player %d \n", g.board[0][0])
+		return
 	}
 	if g.board[0][2] != 0 && g.board[0][2] == g.board[1][1] && g.board[1][1] == g.board[2][0] {
 		g.victory = g.board[0][2]
-		//fmt.Printf("VICTORY player %d \n", g.board[0][2])
+		return
 	}
 
 	// Check for tie (if all moves played and no winner)
 	if g.moves >= 9 {
 		g.victory = 3 // Tie
-		//fmt.Printf("VICTORY player %d \n", g.player)
+		return
 	}
 
 	g.victory = 0 // Game is still ongoing

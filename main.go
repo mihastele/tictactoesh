@@ -54,4 +54,14 @@ func main() {
 		drawBoard(gs)
 		gs.checkVictory()
 	}
+
+	switch gs.victory {
+	case 1, 2:
+		fmt.Println("Player", gs.victory, "wins!")
+	case 3:
+		fmt.Println("Tie!")
+	default:
+		fmt.Println("Game failed successfully", err)
+		return
+	}
 }
