@@ -18,10 +18,12 @@ moves -> moves played
 MAX_MOVES -> bad constant to track when the game is over to avoid infinite loop
 */
 type GameState struct {
-	victory   int
-	board     [3][3]int
-	moves     int
-	MAX_MOVES int
+	terminalTextColor rune
+	playerColors      [2]rune
+	victory           int
+	board             [3][3]int
+	moves             int
+	MAX_MOVES         int
 }
 
 func initGameState() GameState {

@@ -9,28 +9,34 @@ import (
 
 func main() {
 
-	var playerColors [2]rune
-
+	gs := initGameState()
 	//fmt.Println(playerColor1, playerColor2)
+
+	fmt.Println("What is your terminal text color?(b/w default -> w[white]): ")
+	_, err := fmt.Scanf("%c", &gs.terminalTextColor)
+
+	if err != nil {
+		gs.terminalTextColor = 'w'
+	}
 
 	fmt.Println("Select player 1 color (w/r/g/b/y/c/m/k): ")
 
-	_, err := fmt.Scanf("%c", &playerColors[0])
+	_, err = fmt.Scanf("%c", &gs.playerColors[0])
 
 	if err != nil {
 		fmt.Println("Error: ", err)
+		return
 	}
 
 	//fmt.Println(playerColor1)
 
 	fmt.Println("Select player 2 color (w/r/g/b/y/c/m/k): ")
-	_, err = fmt.Scanf("%c", &playerColors[1])
+	_, err = fmt.Scanf("%c", &gs.playerColors[1])
 
 	if err != nil {
 		fmt.Println("Error: ", err)
+		return
 	}
-
-	gs := initGameState()
 
 	for gs.victory < 1 {
 		if gs.moves >= gs.MAX_MOVES {
