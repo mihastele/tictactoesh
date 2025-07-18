@@ -28,6 +28,10 @@ var playerSprites [2][5]string = [2][5]string{
 func drawBoard(state GameState) {
 	fmt.Println("    1  |  2  |  3 ")
 	fmt.Println("  -----|-----|-----")
+	drawBoardLine(state, 0)
+	drawBoardLine(state, 1)
+	drawBoardLine(state, 2)
+	fmt.Printf("\n\n")
 }
 
 func drawBoardLine(gs GameState, index int) {
@@ -63,12 +67,6 @@ func drawBoardLine(gs GameState, index int) {
 				fmt.Printf("|")
 			}
 		}
-
-		//fmt.Printf("%v|%v|%v\n",
-		//	playerSprites[gs.board[index][0]][i],
-		//	playerSprites[gs.board[index][1]][i],
-		//	playerSprites[gs.board[index][2]][i],
-		//)
 	}
 	fmt.Println("  -----|-----|-----")
 }

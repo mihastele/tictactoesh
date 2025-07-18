@@ -4,15 +4,12 @@ import (
 	"fmt"
 )
 
-//TIP <p>To run your code, right-click the code and select <b>Run</b>.</p> <p>Alternatively, click
-// the <icon src="AllIcons.Actions.Execute"/> icon in the gutter and select the <b>Run</b> menu item from here.</p>
-
 func main() {
 
 	gs := initGameState()
 	//fmt.Println(playerColor1, playerColor2)
 
-	fmt.Println("What is your terminal text color?(b/w default -> w[white]): ")
+	fmt.Println("What is your terminal text color?(b/w/g default -> w[white]): ")
 	_, err := fmt.Scanf("%c", &gs.terminalTextColor)
 
 	if err != nil {
@@ -43,18 +40,19 @@ func main() {
 			gs.victory = Tie // tied state
 		}
 
+		fmt.Println("Enter a move (Examples A1, B3, C2, ...)")
+		fmt.Printf("Player %d move: ", gs.player+1)
+		var move string
+		fmt.Scanf("%s", &move)
+
+		err := assignPlayerMove(&gs, move)
+		if err != nil {
+			fmt.Println("Error: ", err)
+			continue
+		}
+
+		drawBoard(gs)
+		gs.checkVictory()
+
 	}
-
-	//fmt.Println(playerColor2)
-
-	////TIP <p>Press <shortcut actionId="ShowIntentionActions"/> when your caret is at the underlined text
-	//// to see how GoLand suggests fixing the warning.</p><p>Alternatively, if available, click the lightbulb to view possible fixes.</p>
-	//s := "gopher"
-	//fmt.Printf("Hello and welcome, %s!\n", s)
-	//
-	//for i := 1; i <= 5; i++ {
-	////TIP <p>To start your debugging session, right-click your code in the editor and select the Debug option.</p> <p>We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-	//// for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.</p>
-	//fmt.Println("i =", 100/i)
-	//}
 }
