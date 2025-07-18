@@ -33,6 +33,9 @@ func main() {
 	gs := initGameState()
 
 	for gs.victory < 1 {
+		if gs.moves >= gs.MAX_MOVES {
+			gs.victory = Tie // tied state
+		}
 
 	}
 
