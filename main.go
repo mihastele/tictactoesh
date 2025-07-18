@@ -53,7 +53,5 @@ func main() {
 
 		drawBoard(gs)
 		gs.checkVictory()
-		fmt.Println(gs.victory)
-
 	}
 }
