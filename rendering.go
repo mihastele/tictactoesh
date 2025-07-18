@@ -59,7 +59,7 @@ func drawBoardLine(gs GameState, index int) {
 				fmt.Printf("%v%v%v",
 					playerColorMapToBashColor[gs.playerColors[player]],
 					playerSprites[player][i],
-					playerColorMapToBashColor['w'], // reset color, assuming black background with white text
+					playerColorMapToBashColor[gs.terminalTextColor], // reset color, assuming black background with white text
 				)
 			}
 
