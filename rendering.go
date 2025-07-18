@@ -63,7 +63,7 @@ func drawBoardLine(gs GameState, index int) {
 				)
 			}
 
-			if i != 2 {
+			if j != 2 {
 				fmt.Printf("|")
 			}
 		}
