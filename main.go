@@ -1,18 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 //TIP <p>To run your code, right-click the code and select <b>Run</b>.</p> <p>Alternatively, click
 // the <icon src="AllIcons.Actions.Execute"/> icon in the gutter and select the <b>Run</b> menu item from here.</p>
 
 func main() {
 
-	var playerColor1, playerColor2 rune
+	var playerColors [2]rune
+
 	//fmt.Println(playerColor1, playerColor2)
 
 	fmt.Println("Select player 1 color (w/r/g/b/y/c/m/k): ")
 
-	_, err := fmt.Scanf("%c", &playerColor1)
+	_, err := fmt.Scanf("%c", &playerColors[0])
 
 	if err != nil {
 		fmt.Println("Error: ", err)
@@ -21,22 +24,18 @@ func main() {
 	//fmt.Println(playerColor1)
 
 	fmt.Println("Select player 2 color (w/r/g/b/y/c/m/k): ")
-	_, err = fmt.Scanf("%c", &playerColor2)
+	_, err = fmt.Scanf("%c", &playerColors[1])
 
 	if err != nil {
 		fmt.Println("Error: ", err)
 	}
 
-	var playerColorMapToBashColor = map[rune]string{
-		'w': "\u001B[97m",
-		'r': "\u001B[31m",
-		'g': "\u001B[32m",
-		'b': "\u001B[34m",
-		'y': "\u001B[33m",
-		'c': "\u001B[36m",
-		'm': "\u001B[35m",
-		'k': "\u001B[30m",
-		'p': "\u001B[37m",
+	initGameState()
+
+	var victory int = 0
+
+	for victory < 1 {
+
 	}
 
 	//fmt.Println(playerColor2)
