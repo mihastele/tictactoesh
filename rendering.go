@@ -14,6 +14,12 @@ var playerColorMapToBashColor = map[rune]string{
 	'p': "\u001B[37m",
 }
 
+/*
+index:
+0 -> player1 sprite
+1 -> player2 sprite
+each subarray is a row forming a 5x5 image
+*/
 var playerSprites [2][5]string = [2][5]string{
 	{"X   X", " X X ", "  X  ", " X X ", "X   X"},
 	{" OOO ", "O   O", "O   O", "O   O", " OOO "},
@@ -40,11 +46,23 @@ func drawBoardLine(gs GameState, index int) {
 		} else {
 			fmt.Print("  ")
 		}
-		fmt.Printf("%v|%v|%v\n",
-			playerSprites[gs.board[index][0]][i],
-			playerSprites[gs.board[index][1]][i],
-			playerSprites[gs.board[index][2]][i],
-		)
+
+		for j := 0; j < 3; j++ {
+			if gs.board[index][j] == 0 {
+				fmt.Print("     ")
+				continue
+			}
+			fmt.Printf("%v", playerSprites[gs.board[index][j]][i])
+			if i != 2 {
+				fmt.Printf("|")
+			}
+		}
+
+		//fmt.Printf("%v|%v|%v\n",
+		//	playerSprites[gs.board[index][0]][i],
+		//	playerSprites[gs.board[index][1]][i],
+		//	playerSprites[gs.board[index][2]][i],
+		//)
 	}
 	fmt.Println("  -----|-----|-----")
 }

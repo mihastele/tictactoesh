@@ -11,6 +11,12 @@ const (
 	Tie
 )
 
+/*
+victory -> 0 game is on, 1 player1 winds, 2 player2 wins, 3 Tie
+board -> board pieces: 0 empty, 1 player1, 2 player2
+moves -> moves played
+MAX_MOVES -> bad constant to track when the game is over to avoid infinite loop
+*/
 type GameState struct {
 	victory   int
 	board     [3][3]int
