@@ -67,8 +67,9 @@ func assignPlayerMove(gs *GameState, move string) error {
 	if gs.board[coordX][coordY] != 0 {
 		return fmt.Errorf("square already occupied")
 	}
-	gs.board[coordX][coordY] = gs.player
+	gs.board[coordX][coordY] = gs.player + 1 // remember gs board has 0 reserved for empty
 	gs.moves++
+	gs.player = (gs.player + 1) % 2
 	return nil
 }
 

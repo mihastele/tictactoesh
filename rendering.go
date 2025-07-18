@@ -54,19 +54,20 @@ func drawBoardLine(gs GameState, index int) {
 		for j := 0; j < 3; j++ {
 			if gs.board[index][j] == 0 {
 				fmt.Print("     ")
-				continue
+			} else {
+				player := gs.board[index][j] - 1
+				fmt.Printf("%v%v%v",
+					playerColorMapToBashColor[gs.playerColors[player]],
+					playerSprites[player][i],
+					playerColorMapToBashColor['w'], // reset color, assuming black background with white text
+				)
 			}
-			player := gs.board[index][j] - 1
-			fmt.Printf("%v%v%v",
-				playerColorMapToBashColor[gs.playerColors[player]],
-				playerSprites[player][i],
-				playerColorMapToBashColor['w'], // reset color, assuming black background with white text
-			)
 
 			if i != 2 {
 				fmt.Printf("|")
 			}
 		}
+		fmt.Printf("\n")
 	}
 	fmt.Println("  -----|-----|-----")
 }
