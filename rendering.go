@@ -14,11 +14,37 @@ var playerColorMapToBashColor = map[rune]string{
 	'p': "\u001B[37m",
 }
 
-var playerSprites [2][4]string = [2][4]string{
-	{"X  X", " XX ", " XX ", "X  X"},
-	{" OO ", "O  O", "O  O", " OO "},
+var playerSprites [2][5]string = [2][5]string{
+	{"X   X", " X X ", "  X  ", " X X ", "X   X"},
+	{" OOO ", "O   O", "O   O", "O   O", " OOO "},
 }
 
 func drawBoard(state GameState) {
-	fmt.Println("")
+	fmt.Println("    1  |  2  |  3 ")
+	fmt.Println("  -----|-----|-----")
+}
+
+func drawBoardLine(gs GameState, index int) {
+	for i := 0; i < 5; i++ {
+		if i == 2 {
+			var rightLabel rune
+			switch index {
+			case 0:
+				rightLabel = 'A'
+			case 1:
+				rightLabel = 'B'
+			case 2:
+				rightLabel = 'C'
+			}
+			fmt.Printf("%c ", rightLabel)
+		} else {
+			fmt.Print("  ")
+		}
+		fmt.Printf("%v|%v|%v\n",
+			playerSprites[gs.board[index][0]][i],
+			playerSprites[gs.board[index][1]][i],
+			playerSprites[gs.board[index][2]][i],
+		)
+	}
+	fmt.Println("  -----|-----|-----")
 }

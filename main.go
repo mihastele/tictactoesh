@@ -30,11 +30,9 @@ func main() {
 		fmt.Println("Error: ", err)
 	}
 
-	initGameState()
+	gs := initGameState()
 
-	var victory int = 0
-
-	for victory < 1 {
+	for gs.victory < 1 {
 
 	}
 
